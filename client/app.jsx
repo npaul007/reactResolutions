@@ -27,12 +27,15 @@ export default class App extends TrackerReact(Component) {
 
   render(){
       var res = this.resolutions();
+
       if(res.length < 1){
         return(
           <div>Loading</div>
         )
       }
+
       console.log(res);
+
       return(
       	<div>
         	<h1>My Resolutions</h1>
@@ -41,7 +44,9 @@ export default class App extends TrackerReact(Component) {
         	</form>
 
           <div>
-            {res[0].text}
+            {res.map( (resObject,index) => {
+              return <li key={index}>{resObject.text}</li> ;
+            })}
           </div>
         </div>
       );
